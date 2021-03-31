@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: blog
 title:  "New reasoning"
 date:   2021-03-27 21:31:00 +0200
 edited: 2021-03-29 17:41:00 +0200
@@ -49,7 +49,7 @@ Around the same time in 2020 I realized I burnt out again. Unlike the last time,
 
 # Morals and closing thoughts
 
-**Try to match the difficulty of a project with your proficiency level**. This is a mistake I've made throughout my life, noticed it a couple of times, but only recently took action to combat it. I have this perfect analogy involving cars: Imagine the difficulty of the project is the gear that you're in, and your level of knowledge on the topic is your current speed. If you want to to from 0-100, the quickest way to do that is to start from first gear and work your way up to the last. You _could_ start from a standstill with the sixth gear, and you would end up reaching 100 eventually, but that's way more inefficient.
+**Try to match the difficulty with your proficiency level**. This is a mistake I've made throughout my life, even realized it a couple of times, but I've never felt I've taken action to combat this. Basically I'd pick the hardest tasks thinking that I'd learn the most that way. I'd often implode from the difficulty and just give up. Feeling that the work is hard does not mean that it's also optimal.
 
 **Do you value depth-first or breath-first learning**? Many aspects of life can be placed on a scale with 2 extremities. Learning is no exception. All this time I've been seeking out depth-first avenues, however I came to realize that what I truly desire is a breath-first experience, at least for the time being. This was another source of internal frustration to which I've been completely oblivious to.
 
