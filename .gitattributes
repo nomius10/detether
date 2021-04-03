@@ -1,0 +1,2 @@
+# Ignore wasm-bindgen files from github code stats. I'm not writing that much JS lol.
+toolbox/**/* linguist-generated

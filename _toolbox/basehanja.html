@@ -1,0 +1,71 @@
+---
+layout: simple
+title:  "BaseHanja encode/decode"
+permalink: /toolbox/basehanja
+---
+
+<a href="/">Back to the site</a>
+<br>
+TODO
+
+<div>
+    <textarea id="ta_left" name="ta_left" rows="4" cols="50" placeholder="The decoded text..."></textarea>
+
+    <div>
+        <button type="button" onclick="encode()">encode</button>
+        <select name="codec" id="codec"></select>
+        <button type="button" onclick="decode()">decode</button>
+    </div>
+
+    <textarea id="ta_right" name="ta_right" rows="4" cols="50" placeholder="The encoded text..."></textarea>
+</div>
+
+<script type="module">
+    import init, {encode_utf8, decode_utf8, get_encodings} from '/toolbox/basehanja/basehanja.js';
+    window.__my_encode = encode_utf8;
+    window.__my_decode = decode_utf8;
+
+    (async function(){
+        await init();
+        window.my_codecs = get_encodings();
+    })();
+</script>
+<script>
+    function encode() {
+        let src = document.getElementById("ta_left").value;
+        let codec = document.getElementById("codec").value;
+        try {
+            let enc = window.__my_encode(src, codec);
+            document.getElementById("ta_right").value = enc;
+        } catch (error) {
+            window.alert(error);
+        }
+    }
+
+    function decode() {
+        let src = document.getElementById("ta_right").value;
+        let codec = document.getElementById("codec").value;
+        try {
+            let dec = window.__my_decode(src, codec);
+            document.getElementById("ta_left").value = dec;
+        } catch (error) {
+            window.alert(error);
+        }
+    }
+
+    async function set_codecs() {
+        try {
+            var codec_select = document.getElementById("codec");
+
+            window.my_codecs.forEach((o) => {
+                var new_option = document.createElement("option");
+                new_option.text = o.description;
+                new_option.value = o.name;
+                codec_select.add(new_option);
+            });
+        } catch {
+            setTimeout(set_codecs, 5);
+        }
+    }
+    set_codecs();
+</script>
