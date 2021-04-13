@@ -1,18 +1,52 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: blog
-title:  detether.net
+title: detether.net
 permalink: /
 ---
 
-<div style="text-align:center">
-    <h1>detether.net</h1>
+<!DOCTYPE html>
+<html lang="en">
+    {% include head.html %}
+<style>
+html {
+    font-size: calc(2.5vmin + 0.5em);
+}
+html, body {
+    margin:0px;
+    height:100%;
+}
+body {
+    display: grid;
+    place-items: center;
 
-    <h4>Personal tech-blog + utilities + portofolio thingy on the web</h1>
+    background-image: url("/img/svg/stars.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+body > div {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
-    <a href="/blog">Blog</a>
-    <a href="/toolbox">Toolbox</a>
-    <a href="/about">About</a>
-</div>
+    background-color: whitesmoke;
+    border-radius: 1em;     /* round corners */
+    padding: 0em 2em 1.5em 1.5em;
+}
+</style>
+
+<body>
+    <div class="flex">
+        <h1>detether.net</h1>
+
+        <h4>Personal tech-blog + utilities + portofolio thingy on the web</h1>
+
+        <div>
+            <a href="/blog">Blog</a>
+            <a href="/toolbox">Toolbox</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+</body>
+
+</html>
