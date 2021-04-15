@@ -1,16 +1,12 @@
-/* Inspired by:
- *   https://without.boats/blog/
- */
-
+/* global definitions */
 :root{
-    --themeColor:   #28a8a888;
-    --complColor:   #A82828;
-    --tria1Color:   #a88828;
-    --bgColor:      #ffffff;
-    --midGrey:      #7f7f7f;
-    --lightOverlay: #313135;
-    --botImgAR:     calc(786 / 2298);   /* technically 1/AR */
-    --botImgHeight: calc(var(--botImgAR) * 100vw)
+    --bgColor:      hsl(0, 0%, 97%);
+    --pnColor:      white;
+    --accentColor:  hsla(45, 62%, 41%, 0.533);
+    --otherColor:   hsla(180, 62%, 41%, 0.533);
+    --midGrey:      hsl(0, 0%, 50%);
+    --contentWidth: clamp(45ch, calc(100vw - 75px), 75ch);
+    --sidebarWidthV: 75px;
 }
 html {
     background-color: var(--bgColor);
@@ -18,112 +14,92 @@ html {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     font-size: 16px;
 }
+body {
+    margin: 0px;
+}
 
 /* background & content box */
-body {
-    background-color: magenta;  /* The color of errors. AKA the color of shame */
-    margin : 0px;
-}
-header {
-    background-color: black;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0px;
-    padding: 1em 2em 1em 2em;
-    border-bottom: 3px solid black;
-    /* text */
-    color : white;
-}
-.body {
-    background-color: rgb(0, 64, 128);
-}
-.contentContainer {
-    padding-top: 4em;
-    padding-bottom: 12em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 100vh;  /* TODO: compute exact size? */
-}
-.content {
-    background-color: #fff;
-    border-radius: 1em;     /* round corners */
-    display:block;
-
-    word-wrap: break-word;
-    padding: 2em;
-    font-size: 1.5rem;
-}
-footer{
+footer {
     padding: 3em 2em 1.5em 2em;
     background-color: #000000;
-    /* text */
     color : white;
 }
+.contentOuter {
+    /*background-color: khaki;*/
+    margin: auto;   /* center horizontally */
+    width: var(--contentWidth);
 
-/* Elements */
-.botNav {
+    box-sizing: border-box;
+    padding: 1rem;
+    padding-top: 5rem;
+    padding-bottom: 10rem;
+    min-height: 100vh;
+}
+.content {
+    background-color: var(--pnColor);
+    border-radius: 1em;     /* round corners */
+    padding: 2rem;
+    border: solid 1px gray;
+}
+
+/* nav bar scheananigans */
+nav {
+    background-color: var(--pnColor);
+    position: fixed;
+    overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
-.postBanner {
-    background-image: 
-        linear-gradient(180deg, 
-            #00000008, 
-            #00000060),
-        url("/img/missing-post-banner.png");
-        color:black;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-clip: border-box;
-    background-size: cover;
 
-    border-left: black solid 1em;
-    border-top-right-radius: 0.5em;     /* round corners */
-    border-bottom-right-radius: 0.5em;     /* round corners */
-    margin-top: 2em;
-
-    min-height: 400px;  /* TODO */
-
-    display: flex;                  /* aligns the text to the bottom. somehow */
-    justify-content: flex-start;
-    align-items: flex-end;
-}
-.postBanner h2 {
-    background-color: #000;
-    margin-left: 1em;
-    max-width: 70%;
-    color: #fff;
-    padding : 0.3em;
-    line-height: 110%;
-}
-a .postBanner:hover {
-    cursor: hand;
-    cursor: pointer;
-    opacity: .75;
- }
-
-/* Touches */
-header a {
-    font-family: inherit;
-    margin-right: 0.5em;
+nav a {
     font-size: 125%;
 }
-header div a {
-    font-size: 150%;
+
+nav a:first-child {
+    font-size: var(--sidebarWidthV);
 }
+
+@media all and (orientation:landscape) {
+    nav {
+        width: 75px;
+        height: 100vh;
+        border-right: solid 1px gray;
+        flex-direction: column;
+    }
+
+    nav a {
+        padding-top: 0.5rem;
+    }
+
+    nav ~ .contentOuter {
+        margin-left: calc(var(--sidebarWidthV) + (100vw - var(--sidebarWidthV) - var(--contentWidth))/2);
+    }
+}
+
+@media all and (orientation:portrait) {
+    nav {
+        height: 75px;
+        width: 100vw;
+        flex-direction: row;
+    }
+
+    nav a {
+        padding-left: 1rem;
+    }
+
+    nav ~ .contentOuter {
+        border-top: solid 75px;
+    }
+}
+
+/* Various touches */
 a {
-    font-family: 'Fira sans', 'Roboto Mono', monospace;
-    border-bottom: 3px solid var(--tria1Color);
+    /*font-family: 'Fira sans', 'Roboto Mono', monospace;*/
+    border-bottom: 3px solid var(--accentColor); /* underline */
     color: inherit; /* disable pesky blue link color */
     text-decoration: none; /* disable default underline */
 }
 a:hover {
-    background-color: var(--tria1Color);
+    background-color: var(--accentColor);
     color: #fff;
 }
 time {
@@ -131,33 +107,9 @@ time {
     font-family: 'DM Mono', 'Roboto Mono', monospace;
 }
 ::selection {
-    background: var(--complColor);
+    background: var(--otherColor);
     color: #ffffff;
 }
-
-/********** Code blocks **********
-pre {
-    background-color: var(--tria1Color);
-    line-height: 1.4;
-    overflow-x: auto;
-    padding: 1rem;
-    border-radius: 3px;
-}
-code {
-    padding: .15rem .3rem;
-    background-color: var(--lightOverlay);
-    border-radius: 3px;
-}
-.highlight pre ::selection {
-    background: rgba(255, 255, 255, 0.2);
-    color: inherit;
-}
-pre code {
-    background-color: transparent;
-    color: inherit;
-    font-size: 100%;
-    padding: 0;
-}*/
 
 /* https://jwarby.github.io/jekyll-pygments-themes/languages/javascript.html
 Github Theme */

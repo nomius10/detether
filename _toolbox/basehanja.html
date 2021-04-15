@@ -1,25 +1,42 @@
 ---
-layout: simple
+layout: toolbox
 title:  "BaseHanja encode/decode"
 permalink: /toolbox/basehanja
+repo: https://github.com/nomius10/basehanja
 ---
 
-<a href="/">Back to the site</a>
-<br>
-TODO
+<h3>BaseHanja encoder + decorder</h3>
 
+An impractical binary to text encoder supporting various UTF8 charsets.
+
+<br><br>
 <div>
     <textarea id="ta_left" name="ta_left" rows="4" cols="50" placeholder="The decoded text..."></textarea>
 
-    <div>
-        <button type="button" onclick="encode()">encode</button>
+    <div id="options">
+        <button type="button" onclick="encode()">encode ↓</button>
+        <button type="button" onclick="decode()">decode ↑</button>
+        Encoding:
         <select name="codec" id="codec"></select>
-        <button type="button" onclick="decode()">decode</button>
     </div>
 
     <textarea id="ta_right" name="ta_right" rows="4" cols="50" placeholder="The encoded text..."></textarea>
 </div>
 
+
+<style>
+    textarea {
+        width: 100%;
+        height: 25vh;
+        resize: none;
+    }
+    #options {
+        padding: 0.5ch;
+    }
+    .contentOuter {
+        max-height: 100vh;
+    }
+</style>
 <script type="module">
     import init, {encode_utf8, decode_utf8, get_encodings} from '/toolbox/basehanja/basehanja.js';
     window.__my_encode = encode_utf8;

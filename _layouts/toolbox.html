@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include head.html %}
+    <body>
+        <div style="position: fixed;">
+            <a href="/">↩ Back to the site</a>
+            {% if page.repo %}
+            <br>
+            <a href="{{ page.repo }}">Source code</a>
+            {% endif %}
+        </div>
+
+        <div class="contentOuter">
+            <div class="content">
+                {{ content }}
+            </div>
+        </div>
+    </body>
+</html>

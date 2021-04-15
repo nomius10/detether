@@ -1,12 +1,14 @@
 ---
-layout: blog
+layout: toolbox
 title:  toolbox
 permalink: /toolbox
 ---
 
-So, I'd like to have here a list of browser-based tools I'd create. //TODO
+This is a list of tools I've made that can run in the browser. They're either written in javascript or compiled to webassembly.
 
 {% for tool in site.toolbox %}
-    <h3>{{ tool.title }}</h3>
-    <a href="{{ tool.url }}">{{ tool.title }}</a>
+    <h3><a href="{{ tool.url }}">{{ tool.title }}</a></h3>
+    {% if tool.description %}
+    {{ tool.description }}
+    {% endif %}
 {% endfor %}
