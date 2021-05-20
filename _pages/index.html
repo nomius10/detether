@@ -24,30 +24,50 @@ permalink: /
         background-position: center;
     }
     body > div {
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
 
         background-color: whitesmoke;
         border-radius: 1em;     /* round corners */
-        padding: 0em 2em 1.5em 1.5em;
+        padding: 1.5em;
+    }
+    body > div > * {
+        margin: 0px;
+        padding-top: 1em;
     }
     a {
         margin: 0.5ch;
     }
+    span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 </style>
 
 <body>
-    <div class="flex">
-        <h1>detether.net</h1>
+    <div>
+        <h1 style="padding:0px">detether.net</h1>
 
-        <h4>Personal tech-blog + utilities + portofolio thingy on the web</h1>
+        <span>
+            <h4> Personal </h4>
+            <div style="padding-left: 1em; padding-right: 1em;">
+                tech-blog <br>
+                utilities <br>
+                portofolio
+            </div>
+            <h4> thingy on the web </h4>
+        </span>
+
+        <h4>Though mostly WIP...</h4>
 
         <div>
             <a href="/blog">Blog</a>
             <a href="/toolbox">Toolbox</a>
             <a href="/about">About</a>
+            <a href="/cv">Resumé</a>
         </div>
     </div>
 </body>
