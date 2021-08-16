@@ -1,5 +1,5 @@
 ---
-layout: blog
+layout: main
 title:  "New reasoning"
 date:   2021-03-27 21:31:00 +0200
 edited: 2021-03-29 17:41:00 +0200

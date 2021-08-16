@@ -2,11 +2,11 @@
 :root{
     --bgColor:      hsl(0, 0%, 97%);
     --pnColor:      white;
-    --accentColor:  hsla(45, 62%, 41%, 0.533);
-    --otherColor:   hsla(180, 62%, 41%, 0.533);
+    --accentColor:  hsla(180, 62%, 41%, 0.533);
+    --otherColor:   hsla(45, 62%, 41%, 0.533);
     --midGrey:      hsl(0, 0%, 50%);
-    --contentWidth: clamp(45ch, calc(100vw - 75px), 75ch);
-    --sidebarWidthV: 75px;
+    --sidebarWidth: 30ch;
+    --contentWidth: clamp(45ch, calc(100vw - var(--sidebarWidth)), 75ch);
 }
 html {
     background-color: var(--bgColor);
@@ -39,55 +39,58 @@ footer {
     background-color: var(--pnColor);
     border-radius: 1em;     /* round corners */
     padding: 2rem;
-    border: solid 1px gray;
 }
 
 /* nav bar scheananigans */
-nav {
-    background-color: var(--pnColor);
-    position: fixed;
-    overflow: hidden;
-    display: flex;
-}
 
 nav a {
     font-size: 125%;
 }
 
-nav a:first-child {
-    font-size: var(--sidebarWidthV);
-}
-
 @media all and (orientation:landscape) {
     nav {
-        width: 75px;
-        height: 100vh;
-        border-right: solid 1px gray;
+        position: fixed;
+        overflow: hidden;
+        display: flex;
+
+        width: var(--sidebarWidth);
+        height: calc(100vh - 4em);
+        margin-top: 2em;
+        margin-bottom: 2em;
         flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 1em;
+        text-align: end;
+        box-sizing: border-box;
+        border-right: 1px solid black;
+    }
+
+    nav a:first-child {
+        margin-bottom: 2.5em;
     }
 
     nav a {
-        padding-top: 0.5rem;
+        margin-top: 1rem;
     }
 
     nav ~ .contentOuter {
-        margin-left: calc(var(--sidebarWidthV) + (100vw - var(--sidebarWidthV) - var(--contentWidth))/2);
+        margin-left: calc(var(--sidebarWidth) + (100vw - var(--sidebarWidth) - var(--contentWidth))/2);
     }
 }
 
 @media all and (orientation:portrait) {
     nav {
-        height: 75px;
+        overflow: hidden;
+        display: flex;
+
+        height: 2em;
         width: 100vw;
         flex-direction: row;
     }
 
     nav a {
-        padding-left: 1rem;
-    }
-
-    nav ~ .contentOuter {
-        border-top: solid 75px;
+        margin-left: 1rem;
     }
 }
 
