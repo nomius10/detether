@@ -51,6 +51,8 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+excerpt_separator: "<!--more-->"  #global excerpt separator for the blog posts
+
 include: ['_pages', '_toolbox']
 permalink: /blog/:title
 collections:
